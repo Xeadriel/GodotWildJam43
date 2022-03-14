@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "PC",
+"language": "GDScript",
+"path": "res://PC.gd"
+}, {
+"base": "PC",
+"class": "Yang",
+"language": "GDScript",
+"path": "res://Yang.gd"
+} ]
+_global_script_class_icons={
+"PC": "",
+"Yang": ""
+}
+
 [application]
 
 config/name="Godot Wild Jam 43"
@@ -19,6 +35,19 @@ window/size/width=512
 window/size/height=288
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[input]
+
+leftClick={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+rightClick={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [physics]
 
