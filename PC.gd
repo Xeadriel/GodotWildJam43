@@ -1,11 +1,16 @@
 extends KinematicBody2D
 class_name PC
 
+onready var game = get_parent()
+
 var selected = false
 var paused = false
 var path =  []
 
 const SPEED = 3
+var spellPot = []
+
+enum {FORCE, FIRE, EARTH, PSI, WATER, AIR}
 
 onready var nav = get_parent().get_node("Navigation2D")
 
@@ -20,16 +25,22 @@ func _process(delta: float) -> void:
 		checkIfNextPointReached()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not selected:
-		return
 	if event.is_action_pressed("rightClick"):
+		if not selected:
+			return
 		path = nav.get_simple_path(position, event.position)
+
+func castSpell(position):
+	pass
 
 func select():
 	selected = true
 
 func deselect():
 	selected = false
+
+func togglePause():
+	paused = !paused
 
 func moveTowardsPoint():
 	if path.empty():

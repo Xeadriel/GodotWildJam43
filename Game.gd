@@ -2,6 +2,10 @@ extends Node2D
 
 var selected = null
 
+enum {FORCE, FIRE, EARTH, PSI, WATER, AIR}
+
+onready var pausableStuff = [$Yang, $Yin]
+
 func _unhandled_input(event: InputEvent) -> void:
 	#selection
 	if event.is_action_pressed("leftClick"):
@@ -28,6 +32,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				shapes.remove(index)
 
+	#pausing
+	if event.is_action_pressed("pause"):
+		for stuff in pausableStuff:
+			stuff.togglePause()
 
 func deselect():
 	if selected != null:
