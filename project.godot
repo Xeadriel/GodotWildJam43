@@ -9,6 +9,26 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Sprite",
+"class": "EarthAOE",
+"language": "GDScript",
+"path": "res://Scripts/EarthAOE.gd"
+}, {
+"base": "Sprite",
+"class": "FireBall",
+"language": "GDScript",
+"path": "res://Scripts/FireBall.gd"
+}, {
+"base": "Node2D",
+"class": "ForcePush",
+"language": "GDScript",
+"path": "res://Scripts/ForcePush.gd"
+}, {
+"base": "Sprite",
+"class": "MagmaFist",
+"language": "GDScript",
+"path": "res://Scripts/MagmaFist.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "PC",
 "language": "GDScript",
@@ -25,6 +45,10 @@ _global_script_classes=[ {
 "path": "res://Scripts/Yin.gd"
 } ]
 _global_script_class_icons={
+"EarthAOE": "",
+"FireBall": "",
+"ForcePush": "",
+"MagmaFist": "",
 "PC": "",
 "Yang": "",
 "Yin": ""
