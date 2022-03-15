@@ -17,7 +17,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			spellPot = []
 	if event.is_action_pressed("leftClick"):
 		if not spellPot.empty():
-			castSpell(event.position)
+			setSpell(event.position)
 			spellPot = []
 	if event.is_action_pressed("psi"):
 		if spellPot.size() ==3:
@@ -34,5 +34,5 @@ func _unhandled_input(event: InputEvent) -> void:
 			spellPot.pop_front()
 		spellPot.append(AIR)
 
-func castSpell(position):
+func setSpell(position):
 	print(spellPot)

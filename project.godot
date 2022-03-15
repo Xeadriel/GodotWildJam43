@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "PC",
 "language": "GDScript",
-"path": "res://PC.gd"
+"path": "res://Scripts/PC.gd"
 }, {
 "base": "PC",
 "class": "Yang",
 "language": "GDScript",
-"path": "res://Yang.gd"
+"path": "res://Scripts/Yang.gd"
 }, {
 "base": "PC",
 "class": "Yin",
 "language": "GDScript",
-"path": "res://Yin.gd"
+"path": "res://Scripts/Yin.gd"
 } ]
 _global_script_class_icons={
 "PC": "",
@@ -33,7 +33,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam 43"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalScope="*res://Scripts/GlobalScope.gd"
 
 [display]
 

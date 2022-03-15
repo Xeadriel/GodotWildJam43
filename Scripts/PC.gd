@@ -9,6 +9,7 @@ var path =  []
 
 const SPEED = 3
 var spellPot = []
+var spellToBeCast = []
 
 enum {FORCE, FIRE, EARTH, PSI, WATER, AIR}
 
@@ -23,14 +24,20 @@ func _process(delta: float) -> void:
 	if not paused:
 		moveTowardsPoint()
 		checkIfNextPointReached()
+		castSpell()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("rightClick"):
 		if not selected:
 			return
+		spellToBeCast = []
+		spellPot = []
 		path = nav.get_simple_path(position, event.position)
 
-func castSpell(position):
+func castSpell():
+	pass
+
+func setSpell(pos):
 	pass
 
 func select():
