@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sprites/Yin.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/ConePreview.tscn" type="PackedScene" id=2]
@@ -20,7 +20,15 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 8.0
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.513726, 0.513726, 0.513726, 1 )
+
 [node name="Yin" type="KinematicBody2D"]
+z_index = 1
+z_as_relative = false
 script = ExtResource( 4 )
 forcePushSpawner = ExtResource( 6 )
 earthAOESpawner = ExtResource( 7 )
@@ -36,7 +44,20 @@ shape = SubResource( 2 )
 [node name="ConePreview" parent="." instance=ExtResource( 2 )]
 visible = false
 modulate = Color( 1, 1, 1, 0.364706 )
+z_as_relative = false
 
 [node name="CirclePreview" parent="." instance=ExtResource( 3 )]
 visible = false
 modulate = Color( 1, 1, 1, 0.509804 )
+z_as_relative = false
+
+[node name="HPBar" type="ProgressBar" parent="."]
+margin_left = -7.0
+margin_top = 9.0
+margin_right = 7.0
+margin_bottom = 11.0
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+step = 1.0
+value = 100.0
+percent_visible = false

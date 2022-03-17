@@ -4,6 +4,7 @@
 [ext_resource path="res://Sprites/conePreview.png" type="Texture" id=2]
 
 [node name="ForcePush" type="Node2D"]
+z_index = -1
 script = ExtResource( 1 )
 
 [node name="ConePreview" type="Sprite" parent="."]
@@ -16,5 +17,4 @@ offset = Vector2( 0, -48 )
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Area2D"]
-build_mode = 1
 polygon = PoolVector2Array( 0, 0, -34, 34, -42, 26, -48, 9, -48, -9, -45, -23, -34, -34 )

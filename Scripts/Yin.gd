@@ -3,22 +3,17 @@ class_name Yin
 
 onready var conePreview = $ConePreview
 onready var circlePreview = $CirclePreview
-onready var previews = [conePreview, circlePreview]
 
 
-export var forcePushSpawner : Resource
-export var earthAOESpawner : Resource
-export var fireBallSpawner : Resource
-export var magmaFistSpawner : Resource
+export var forcePushSpawner : PackedScene
+export var earthAOESpawner : PackedScene
+export var fireBallSpawner : PackedScene
+export var magmaFistSpawner : PackedScene
 
 func _ready() -> void:
-	pass
+	previews = [conePreview, circlePreview]
 
 func _process(delta: float) -> void:
-	if not spellPot.empty():
-		game.deselect()
-		
-		
 		var force = 0
 		var fire = 0
 		var earth = 0
@@ -31,13 +26,15 @@ func _process(delta: float) -> void:
 			if spell == EARTH:
 				earth += 1
 		
-		if force > 0 and force <= 3 and fire == 0 and earth == 0:
-			conePreview.visible = true
-		else:
+		if force == 1 and fire == 1 and earth == 1:
 			conePreview.visible = false
-		if  force == 0 and fire == 0 and earth > 0 and earth <= 3:
+			circlePreview.visible = false
+		elif force > 0 and force <= 3 and fire >= 0 and earth == 0:
+			conePreview.visible = true
+		elif  force >= 0 and fire >= 0 and earth > 0 and earth <= 3:
 			circlePreview.visible = true
 		else:
+			conePreview.visible = false
 			circlePreview.visible = false
 
 
@@ -56,7 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		spellPot.append(FORCE)
 		
 	if event.is_action_pressed("fire"):
-		if spellPot.size() ==3:
+		if spellPot.size() == 3:
 			spellPot.pop_front()
 		spellPot.append(FIRE)
 		
@@ -65,14 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			spellPot.pop_front()
 		spellPot.append(EARTH)
 
-func stopNavigation():
-	path = []
 
-func setSpell(pos):
-	for preview in previews:
-		preview.visible = false
-	spellToBeCast = [spellPot, pos]
-	spellPot = []
 
 func castSpell():
 	if spellToBeCast.empty():
@@ -94,7 +84,7 @@ func castSpell():
 			earth += 1
 
 	if force > 0 and force <= 3 and fire >= 0 and earth == 0: #force push with or without fire
-		var forcePush : ForcePush = forcePushSpawner.instance()
+		var forcePush  = forcePushSpawner.instance()
 		forcePush.forceStrength = force
 		forcePush.fireStrength = fire
 		forcePush.global_position = global_position
@@ -102,21 +92,21 @@ func castSpell():
 		game.add_child(forcePush)
 	elif  ((force == 0 and fire >= 0 and earth > 0 and earth <= 3) #earth with or without addons
 			or (force >= 0 and fire == 0 and earth > 0 and earth <= 3)): 
-		var earthAOE : EarthAOE = earthAOESpawner.instance()
+		var earthAOE  = earthAOESpawner.instance()
 		earthAOE.forceStrength = force
 		earthAOE.fireStrength = fire
 		earthAOE.earthStrength = earth
 		earthAOE.position = pos
 		game.add_child(earthAOE)
 	elif (force == 0 and fire > 0 and fire <= 3 and earth == 0): #fireball
-		var fireBall : FireBall = fireBallSpawner.instance()
+		var fireBall  = fireBallSpawner.instance()
 		fireBall.fireStrength = fire
 		var direction = global_position.direction_to(pos)
 		fireBall.direction = direction
 		fireBall.global_position = global_position + direction * 10
 		game.add_child(fireBall)
 	elif (force == 1 and fire == 1 and earth == 1): #magmafist
-		var magmafist : MagmaFist = magmaFistSpawner.instance()
+		var magmafist  = magmaFistSpawner.instance()
 		var direction = global_position.direction_to(pos)
 		magmafist.direction = direction
 		magmafist.global_position = global_position + direction * 10

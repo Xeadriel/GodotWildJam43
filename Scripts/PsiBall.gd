@@ -1,9 +1,9 @@
 extends Projectile
-class_name FireBall
+class_name PsiBall
 
-var fireStrength = 0
+var psiStrength = 0
 
 func bodyCollided(body: Node) -> void:
 	if (body is Enemy):
-		body.fire(fireStrength)
+		body.psi(psiStrength)
 		queue_free()

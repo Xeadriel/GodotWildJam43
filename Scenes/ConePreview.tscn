@@ -4,6 +4,7 @@
 [ext_resource path="res://Scripts/ConePreview.gd" type="Script" id=2]
 
 [node name="ConePreview" type="Node2D"]
+z_index = -1
 script = ExtResource( 2 )
 
 [node name="ConePreview" type="Sprite" parent="."]

@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sprites/Yang.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Yang.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/CirclePreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/WaterWavePreview.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/WaterWave.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/WaterBall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/PsiBall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/SpeedAura.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/HealAura.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Tornado.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/AntiProjectile.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -14,11 +23,46 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 8.0
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.658824, 0.658824, 0.658824, 1 )
+
 [node name="Yang" type="KinematicBody2D"]
+z_index = 1
+z_as_relative = false
 script = ExtResource( 2 )
+psiBallSpawner = ExtResource( 7 )
+waterBallSpawner = ExtResource( 6 )
+antiProjectileSpawner = ExtResource( 11 )
+tornadoSpawner = ExtResource( 10 )
+healAuraSpawner = ExtResource( 9 )
+speedAuraSpawner = ExtResource( 8 )
+waterWaveSpawner = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="CirclePreview" parent="." instance=ExtResource( 3 )]
+visible = false
+modulate = Color( 1, 1, 1, 0.392157 )
+z_as_relative = false
+
+[node name="WaterWavePreview" parent="." instance=ExtResource( 4 )]
+visible = false
+z_as_relative = false
+
+[node name="HPBar" type="ProgressBar" parent="."]
+margin_left = -7.0
+margin_top = 9.0
+margin_right = 7.0
+margin_bottom = 11.0
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+step = 1.0
+value = 100.0
+percent_visible = false

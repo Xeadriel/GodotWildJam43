@@ -9,12 +9,32 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Projectile",
+"class": "AntiProjectile",
+"language": "GDScript",
+"path": "res://Scripts/AntiProjectile.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Aura",
+"language": "GDScript",
+"path": "res://Scripts/Aura.gd"
+}, {
 "base": "Sprite",
 "class": "EarthAOE",
 "language": "GDScript",
 "path": "res://Scripts/EarthAOE.gd"
 }, {
-"base": "Sprite",
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/Enemy.gd"
+}, {
+"base": "Projectile",
+"class": "EnemyProjectile",
+"language": "GDScript",
+"path": "res://Scripts/EnemyProjectile.gd"
+}, {
+"base": "Projectile",
 "class": "FireBall",
 "language": "GDScript",
 "path": "res://Scripts/FireBall.gd"
@@ -24,7 +44,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ForcePush.gd"
 }, {
-"base": "Sprite",
+"base": "Aura",
+"class": "HealAura",
+"language": "GDScript",
+"path": "res://Scripts/HealAura.gd"
+}, {
+"base": "Projectile",
 "class": "MagmaFist",
 "language": "GDScript",
 "path": "res://Scripts/MagmaFist.gd"
@@ -33,6 +58,36 @@ _global_script_classes=[ {
 "class": "PC",
 "language": "GDScript",
 "path": "res://Scripts/PC.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Scripts/Projectile.gd"
+}, {
+"base": "Projectile",
+"class": "PsiBall",
+"language": "GDScript",
+"path": "res://Scripts/PsiBall.gd"
+}, {
+"base": "Aura",
+"class": "SpeedAura",
+"language": "GDScript",
+"path": "res://Scripts/SpeedAura.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Tornado",
+"language": "GDScript",
+"path": "res://Scripts/Tornado.gd"
+}, {
+"base": "Projectile",
+"class": "WaterBall",
+"language": "GDScript",
+"path": "res://Scripts/WaterBall.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "WaterWave",
+"language": "GDScript",
+"path": "res://Scripts/WaterWave.gd"
 }, {
 "base": "PC",
 "class": "Yang",
@@ -45,11 +100,22 @@ _global_script_classes=[ {
 "path": "res://Scripts/Yin.gd"
 } ]
 _global_script_class_icons={
+"AntiProjectile": "",
+"Aura": "",
 "EarthAOE": "",
+"Enemy": "",
+"EnemyProjectile": "",
 "FireBall": "",
 "ForcePush": "",
+"HealAura": "",
 "MagmaFist": "",
 "PC": "",
+"Projectile": "",
+"PsiBall": "",
+"SpeedAura": "",
+"Tornado": "",
+"WaterBall": "",
+"WaterWave": "",
 "Yang": "",
 "Yin": ""
 }
@@ -70,6 +136,12 @@ window/size/width=512
 window/size/height=288
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"flags/filter": false
+}
 
 [input]
 
@@ -116,6 +188,16 @@ water={
 air={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+selectYang={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":49,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+selectYin={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":50,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
