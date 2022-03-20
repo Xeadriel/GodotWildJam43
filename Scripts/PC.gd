@@ -52,6 +52,7 @@ func setSpell(pos):
 
 func water(waterStrength):
 	hp = hp + waterStrength *5
+	hpBar.value = hp
 	if hp > 100:
 		hp = 100
 

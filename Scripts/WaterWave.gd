@@ -7,7 +7,11 @@ onready var areaShape = $Area2D/CollisionShape2D
 var timer = 0
 var direction = Vector2.ONE
 
+onready var game = get_parent()
+
 func _process(delta: float) -> void:
+	if game.pause:
+		return
 	if timer >= 0.001:
 		var bodies = area.get_overlapping_bodies()
 		

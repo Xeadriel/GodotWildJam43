@@ -9,6 +9,20 @@ var pause = false
 onready var yang = $Yang
 onready var yin = $Yin
 
+var timer = 0
+export var slimeSpawner : PackedScene
+
+func _process(delta: float) -> void:
+	timer += delta
+	if timer >= 4 and not pause:
+		spawnSlime()
+		timer = 0
+
+func spawnSlime():
+	var slime = slimeSpawner.instance()
+	slime.global_position = Vector2(450, 50)
+	add_child(slime)
+
 func _unhandled_input(event: InputEvent) -> void:
 		#pausing
 	if event.is_action_pressed("pause"):

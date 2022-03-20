@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 			var bodies = effectArea.get_overlapping_bodies()
 			for body in bodies:
 				if (body is Enemy):
-					print("hi")
 					body.magmaFist(direction)
 			effectAreaShape.disabled = true
 			conePreview.visible = false
